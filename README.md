@@ -2,7 +2,7 @@
 
 ![HackathonPoster](Repository-Assests/HackathonPoster.png) 
 
-Check out the project video here - [YouTube](https://youtu.be/Kz0wZPgQxYc)
+Check out the project video here - [YouTube](https://www.youtube.com/watch?v=WxyaPBM8_Ig)
 
 ## Inspiration💡
  - Applying to Jobs today has still been following the traditional methods of applying on resume-shortlisting websites and receiving a cold reply or at most times no replies from the said organisations. The key problem that candidates face in such scenarios is the lack of tangible understanding the lackonas, pitfalls that cause them to be rejected at multiple job listing websites as there is generally less or no reviews upon their candidature. 
