@@ -1,56 +1,90 @@
- ### Best Data Visualisation Hack at Dataday Grind III by MLH
+# Data Hackfest — Profile Scorer & Job Recommender
 
-![HackathonPoster](Repository-Assests/HackathonPoster.png) 
+> **Winner: Best Data Visualisation Hack at Dataday Grind III by MLH.**
 
-Check out the project video here - [YouTube](https://www.youtube.com/watch?v=gzWx8E4rV8E)
+![Hackathon Poster](Repository-Assests/HackathonPoster.png)
 
-## Inspiration💡
- - Applying to Jobs today has still been following the traditional methods of applying on resume-shortlisting websites and receiving a cold reply or at most times no replies from the said organisations. The key problem that candidates face in such scenarios is the lack of tangible understanding the lackonas, pitfalls that cause them to be rejected at multiple job listing websites as there is generally less or no reviews upon their candidature. 
- - Secondly, Students are often confused about the type of job roles they are a fit for right after their graduation, or maybe even before. If they could be connected with the right kind of objective data understanding as to the careers pursued by other people at their age with similar profiles, they would be at a much better state of understanding what sort of career options are available to them. 
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white)
+![MLH](https://img.shields.io/badge/MLH-Hackathon-blue)
 
-## What it does 🧭
+[Watch the demo on YouTube](https://www.youtube.com/watch?v=gzWx8E4rV8E)
 
-Our Project aims to achieve a objective solution to these 2 growing problems: 
+## About
 
- - Giving candidates tangible profile scores based on their previous qualifications, achievements and extracurriculars. 
- - Connecting candidates to the right domains of jobs based on their profile to kickstart their careers. 
+- **What:** A two-part data science project that (1) scores a candidate's profile against a corpus of real job-seekers and (2) recommends job domains they're statistically a fit for.
+- **Who:** Gyanesh Samanta and Rhythm Srivastav, hacking together as "No Beep-Bops, Only Data Scientists."
+- **When:** Built over the Dataday Grind III hackathon weekend, May 19, 2024.
+- **Where:** Submitted to **Dataday Grind III**, an MLH-affiliated data hackathon.
+- **Why:** Job-application platforms send cold rejections without telling candidates *why* — and students rarely have an objective view of which roles match their profile. We wanted to fix both with math, not vibes.
 
+## The Story
 
-## How we built it 🔧
+Most job portals are black boxes. You upload a resume, you get a templated rejection (or silence), and you're left guessing which line on your CV cost you the interview. We started Dataday Grind III with that frustration and a Kaggle dataset of real candidate profiles, then asked: *what if we could score a profile the same way the model behind the curtain does, and tell the candidate what their realistic next moves are?*
 
-Our solution was built with techniques as data cleaning, feature engineering and modelling algorithms that can accurately rank candidates by comparing profiles of numerous other candidates. 
-Dataset obtained through Kaggle, Coded with <3 using Python. 
+The first notebook (`ProfileScorer.ipynb`) builds a tangible score from qualifications, achievements, and extracurriculars using cosine similarity and TF-IDF on the candidate corpus. The second (`Job_recommendation.ipynb`) clusters candidates with K-means and surfaces the job domains other people-with-your-profile actually ended up in. No black-box deep nets — just interpretable similarity math you can trace from input to output.
 
-## Tech Stack 🔨
-1. Data Science
-2. Python
-3. Jupyter Notebook
-4. Anaconda
-5. Git
-6. GitHub
+The hardest part wasn't the modeling, it was the data. The dataset spans truck drivers, accountants, and SDEs all in one table, so a single global average is meaningless. We sampled inside categories to keep recommendations stable run-to-run, and weighted similarity across domains to handle wildly different career paths converging on the same role.
 
-## Challenges we ran into 🏃♂️
+## Gallery
 
-1. Implementing a scalable solution was difficult given the limited resources of our own local systems. 
-2. The Dataset comprises of jobs from all possible domains ranging from truck drivers to accountants to developers, so the recommendations are based on an weighted average across categories. 
+![Visualization](Repository-Assests/2.png)
 
-## Accomplishments that we're proud of 🏅
-1. We made the analysis to understand how the job market has evolved through the stages in different domains
-2. Implemented models for both problems with accurate enough results (based on testing with our very own profiles!)
+---
 
-## What we learned 🧠
-1. ML techniques the non-traditional way - without the use of pre-defined models or complex techniques, we were able to derive substantial mathamatical equations using functions as cosine similarity, weighted averages, TF-IDF Vectorizer and K-means Clustering.
-2. For the same job, candidates could have widely ranging profiles; e.g. people could be working as SDE-2 at the age of 24 as well as 37, this wide variety led us to implement sampling within the dataset to avoid extreme differences between runs of the same candidate. 
+## Tech Stack
 
+- **Language:** Python 3
+- **Notebooks:** Jupyter (via Anaconda)
+- **Techniques:** Cosine similarity, TF-IDF Vectorizer, K-means clustering, weighted averages
+- **Data source:** Kaggle (link in `Repository-Assests/Kaggle Dataset Link.txt`)
 
-## What's next ⏭
- 1. For future additions we aim to take in a document which could be a candidate's own Resume and process the same without needing for additional inputs from the candidates, this in turn would be a better suited environment for candidates to test out their tangible strengths before presenting the same to a recruiter. 
+## Repo Structure
 
-## Collaborators 🤖
+```
+Data-Hackfest/
+├── Notebook/
+│   ├── EDA.ipynb                 # Exploratory data analysis
+│   ├── datapreprocessing.ipynb   # Cleaning + feature engineering
+│   ├── ProfileScorer.ipynb       # Candidate scoring model
+│   └── Job_recommendation.ipynb  # Domain recommender
+└── Repository-Assests/
+    ├── HackathonPoster.png
+    ├── 2.png
+    └── Kaggle Dataset Link.txt
+```
 
-No Beep-Bops, Only Data Scientists.
+## Getting Started
 
-| Name      | GitHub Profile     |
-| :------------- | :----------: |
-|  Gyanesh Samanta   | [GitHub](https://www.github.com/gyanesh-samanta-123) |
-|  Rhythm Srivastav  | [GitHub](https://github.com/RhythmSrivastava) |
+```bash
+git clone https://github.com/GyaneshSamanta/Data-Hackfest.git
+cd Data-Hackfest
+
+# Recommended: an Anaconda environment
+conda create -n hackfest python=3.10 pandas numpy scikit-learn jupyter
+conda activate hackfest
+
+# Download the dataset from the Kaggle link in Repository-Assests/
+jupyter notebook Notebook/
+```
+
+Run the notebooks in order: `datapreprocessing.ipynb` → `EDA.ipynb` → `ProfileScorer.ipynb` → `Job_recommendation.ipynb`.
+
+## Contributing
+
+Hackathon code is hackathon code — but if you'd like to extend the resume-parsing roadmap (see "What's next" below), open a PR or issue.
+
+**What's next:** accept a raw PDF resume and run the pipeline end-to-end without manual feature input.
+
+## License
+
+Released under the [MIT License](LICENSE).
+
+## Credits
+
+| Name | GitHub |
+| :--- | :----- |
+| Gyanesh Samanta | [@GyaneshSamanta](https://github.com/GyaneshSamanta) |
+| Rhythm Srivastav | [@RhythmSrivastava](https://github.com/RhythmSrivastava) |
+
+Dataset courtesy of Kaggle. Hackathon hosted by Major League Hacking (MLH) — Dataday Grind III.
